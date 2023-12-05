@@ -14,6 +14,7 @@ import com.cirodev.boldweatherapi.R
 import com.cirodev.boldweatherapi.core.generic.Failure
 import com.cirodev.boldweatherapi.ui.component.BasicMessage
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
+import com.cirodev.boldweatherapi.ui.component.SearchInput
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
 
@@ -27,6 +28,7 @@ fun SearchScreen(
         Column (
             modifier = Modifier.padding(it)
         ) {
+            SearchInput { query -> viewModel.searchLocations(query) }
             when(val state = viewModel.locationsState.collectAsState().value) {
                 is DataResult.OnLoading -> {
                     LoadingMessage(Modifier.align(Alignment.CenterHorizontally))
@@ -42,6 +44,10 @@ fun SearchScreen(
                 is DataResult.OnSuccess -> {
                 }
                 else -> {
+                    BasicMessage(
+                        Modifier.align(Alignment.CenterHorizontally),
+                        stringResource(R.string.lets_start)
+                    )
                 }
             }
         }

@@ -72,6 +72,7 @@ dependencies {
     androidTestImplementation platform("androidx.compose:compose-bom:$androidXComposeVersion")
 
     implementation "com.google.accompanist:accompanist-systemuicontroller:$systemUIControllerVersion"
+    implementation "com.google.accompanist:accompanist-insets:$insetsVersion"
 
     implementation 'androidx.compose.material3:material3'
     implementation 'androidx.compose.ui:ui'

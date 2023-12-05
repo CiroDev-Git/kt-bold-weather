@@ -3,4 +3,6 @@
     <string name="no_internet_connection">¡Ups! Parece que no estas conectado. Intentemos nuevamente.</string>
     <string name="something_wrong">¡Vaya! Se ha encontrado un error al procesar la solicitud. Intentemos nuevamente.</string>
     <string name="loading">¡Un momento! Estamos trabajando en tu solicitud.</string>
+    <string name="lets_search">Ingresa la ubicación a consultar</string>
+    <string name="lets_start">¡Usa coordenadas, nombre, código postal o IP para visualizar el estado del clima de un lugar en específico!</string>
 </resources>
