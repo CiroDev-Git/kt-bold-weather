@@ -1,0 +1,7 @@
+package com.cirodev.boldweatherapi
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
+
+@HiltAndroidApp
+class App : Application()
