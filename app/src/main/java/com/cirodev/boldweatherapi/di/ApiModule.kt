@@ -1,5 +1,6 @@
 package com.cirodev.boldweatherapi.di
 
+import com.cirodev.boldweatherapi.BuildConfig
 import com.cirodev.boldweatherapi.data.api.location.request.LocationApi
 import dagger.Module
 import dagger.Provides
@@ -28,7 +29,7 @@ object ApiModule {
             .addInterceptor(
                 Interceptor { chain ->
                     val url = chain.request().url.newBuilder()
-                        .addQueryParameter("key", "")
+                        .addQueryParameter("key", BuildConfig.WEATHER_API_KEY)
                         .build()
                     return@Interceptor chain.proceed(
                         chain.request().newBuilder().url(url).build()
@@ -45,7 +46,7 @@ object ApiModule {
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BuildConfig.WEATHER_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
