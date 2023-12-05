@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "BoldWeatherApi"
 include ':app'
 include ':domain'
+include ':core'
