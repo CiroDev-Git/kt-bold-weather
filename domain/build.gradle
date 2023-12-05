@@ -30,9 +30,11 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':core')
 
     // APP DEPENDENCIES
     implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktxCoroutinesVersion"
 
     // TESTING
     testImplementation "junit:junit:$junitVersion"
