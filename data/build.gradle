@@ -30,10 +30,15 @@ android {
 }
 
 dependencies {
+    implementation project(path: ':core')
+    implementation project(path: ':domain')
 
     // APP DEPENDENCIES
     implementation "androidx.core:core-ktx:$ktxVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$ktxCoroutinesVersion"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
     // TESTING
     testImplementation "junit:junit:$junitVersion"
