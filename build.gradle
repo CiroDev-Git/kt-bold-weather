@@ -17,6 +17,7 @@ buildscript {
         junitVersion = '4.13.2'
         testExtJunitVersion = '1.1.5'
         espressoVersion = '3.5.1'
+        ktxCoroutinesVersion = '1.7.1'
 
     }
 }
