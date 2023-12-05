@@ -23,6 +23,9 @@ buildscript {
         hiltCompilerVersion = '1.1.0'
         hiltAndroidXVersion = '1.1.0'
         okhttpVersion = '5.0.0-alpha.2'
+        androidXComposeVersion = '2023.05.01'
+        systemUIControllerVersion = '0.28.0'
+        composeActivityVersion = '1.8.1'
 
     }
 }
