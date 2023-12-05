@@ -15,6 +15,7 @@ import com.cirodev.boldweatherapi.core.generic.Failure
 import com.cirodev.boldweatherapi.ui.component.BasicMessage
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
 import com.cirodev.boldweatherapi.ui.component.SearchInput
+import com.cirodev.boldweatherapi.ui.screen.search.components.LocationItems
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
 
@@ -42,6 +43,16 @@ fun SearchScreen(
                     BasicMessage(Modifier.align(Alignment.CenterHorizontally), message)
                 }
                 is DataResult.OnSuccess -> {
+                    if (state.data.isEmpty()) {
+                        BasicMessage(
+                            Modifier.align(Alignment.CenterHorizontally),
+                            stringResource(R.string.no_locations_found)
+                        )
+                    } else {
+                        LocationItems(state.data) {
+
+                        }
+                    }
                 }
                 else -> {
                     BasicMessage(
