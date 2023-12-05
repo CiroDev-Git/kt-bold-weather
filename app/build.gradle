@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.cirodev.boldweatherapi'
-    compileSdk 34
+    compileSdk project.compileSdkVersion
 
     defaultConfig {
         applicationId "com.cirodev.boldweatherapi"
-        minSdk 21
-        targetSdk 34
+        minSdk project.minSdkVersion
+        targetSdk project.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
@@ -30,14 +30,26 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion project.kotlinCompilerExtensionVersion
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // APP DEPENDENCIES
+    implementation "androidx.core:core-ktx:$ktxVersion"
+
+    // TESTING
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
 }
