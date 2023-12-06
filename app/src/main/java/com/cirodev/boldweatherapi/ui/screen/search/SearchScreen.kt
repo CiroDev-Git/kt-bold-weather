@@ -19,12 +19,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cirodev.boldweatherapi.R
+import com.cirodev.boldweatherapi.ui.component.BasicMessage
 import com.cirodev.boldweatherapi.ui.component.FailedMessage
 import com.cirodev.boldweatherapi.ui.component.Header
 import com.cirodev.boldweatherapi.ui.component.IconComponent
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
 import com.cirodev.boldweatherapi.ui.component.SearchInput
-import com.cirodev.boldweatherapi.ui.screen.search.components.SearchSuccess
+import com.cirodev.boldweatherapi.ui.screen.search.components.LocationCardItem
 import com.cirodev.boldweatherapi.ui.theme.colorSecondary
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
@@ -34,6 +35,7 @@ fun SearchScreen(
     viewModel: LocationViewModel = hiltViewModel(),
     onDetail: (String) -> Unit
 ) {
+    val state = viewModel.locationsState.collectAsState().value
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -49,36 +51,46 @@ fun SearchScreen(
                 item {
                     SearchSection { viewModel.searchLocations(it) }
                 }
-                item {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 10.dp)
-                    ) {
-                        when (val state = viewModel.locationsState.collectAsState().value) {
-                            is DataResult.OnLoading -> {
-                                LoadingMessage(Modifier.align(Alignment.CenterHorizontally))
-                            }
-
-                            is DataResult.OnFailed -> {
-                                FailedMessage(
-                                    Modifier.align(Alignment.CenterHorizontally),
-                                    state.failure
-                                )
-                            }
-
-                            is DataResult.OnSuccess -> {
-                                SearchSuccess(
-                                    Modifier.align(Alignment.CenterHorizontally),
-                                    state.data
-                                ) { location ->
-                                    onDetail("${location.name} ${location.region}")
-                                }
-                            }
-
-                            else -> {}
+                when (state) {
+                    is DataResult.OnLoading -> {
+                        item {
+                            LoadingMessage(Modifier.align(Alignment.CenterHorizontally))
                         }
                     }
+
+                    is DataResult.OnFailed -> {
+                        item {
+                            FailedMessage(
+                                Modifier.align(Alignment.CenterHorizontally),
+                                state.failure
+                            )
+                        }
+                    }
+
+                    is DataResult.OnSuccess -> {
+                        if (state.data.isEmpty()) {
+                            item {
+                                BasicMessage(
+                                    Modifier.align(Alignment.CenterHorizontally),
+                                    stringResource(R.string.no_locations_found)
+                                )
+                            }
+                        } else {
+                            items(
+                                count = state.data.size,
+                                key = { state.data[it].id!! },
+                                itemContent = {
+                                    LocationCardItem(
+                                        state.data[it],
+                                    ) { location ->
+                                        onDetail("${location.name} ${location.region}")
+                                    }
+                                }
+                            )
+                        }
+                    }
+
+                    else -> {}
                 }
             }
         }
@@ -98,7 +110,7 @@ private fun SearchSection(
         ),
         modifier = Modifier.padding(vertical = 30.dp)
     )
-    Box {
+    Box(modifier = Modifier.padding(bottom = 30.dp)) {
         SearchInput { onSearch(it) }
         IconComponent(
             icon = R.drawable.baseline_clear_24,
