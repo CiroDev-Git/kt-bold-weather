@@ -2,9 +2,7 @@ package com.cirodev.boldweatherapi.ui.screen.search
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cirodev.boldweatherapi.R
-import com.cirodev.boldweatherapi.ui.component.BasicMessage
 import com.cirodev.boldweatherapi.ui.component.FailedMessage
 import com.cirodev.boldweatherapi.ui.component.Header
 import com.cirodev.boldweatherapi.ui.component.IconComponent
@@ -48,27 +45,9 @@ fun SearchScreen(
             Header()
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
-            ){
+            ) {
                 item {
-                    Text(
-                        text = stringResource(id = R.string.lets_start),
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.W600,
-                            color = MaterialTheme.colorScheme.onBackground
-                        ),
-                        modifier = Modifier.padding(vertical = 30.dp)
-                    )
-                    Box {
-                        SearchInput { query -> viewModel.searchLocations(query) }
-                        IconComponent(
-                            icon = R.drawable.baseline_clear_24,
-                            background = colorSecondary,
-                            modifier = Modifier
-                                .align(Alignment.TopEnd)
-                                .size(55.dp)
-                        )
-                    }
+                    SearchSection { viewModel.searchLocations(it) }
                 }
                 item {
                     Column(
@@ -97,12 +76,36 @@ fun SearchScreen(
                                 }
                             }
 
-                            else -> {
-                            }
+                            else -> {}
                         }
                     }
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun SearchSection(
+    onSearch: (String) -> Unit
+) {
+    Text(
+        text = stringResource(id = R.string.lets_start),
+        style = TextStyle(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.W600,
+            color = MaterialTheme.colorScheme.onBackground
+        ),
+        modifier = Modifier.padding(vertical = 30.dp)
+    )
+    Box {
+        SearchInput { onSearch(it) }
+        IconComponent(
+            icon = R.drawable.baseline_clear_24,
+            background = colorSecondary,
+            modifier = Modifier
+                .align(Alignment.TopEnd)
+                .size(55.dp)
+        )
     }
 }
