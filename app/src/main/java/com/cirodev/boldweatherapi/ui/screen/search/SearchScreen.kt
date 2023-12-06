@@ -53,7 +53,7 @@ fun SearchScreen(
                     Text(
                         text = stringResource(id = R.string.lets_start),
                         style = TextStyle(
-                            fontSize = 25.sp,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.W600,
                             color = MaterialTheme.colorScheme.onBackground
                         ),
@@ -98,10 +98,6 @@ fun SearchScreen(
                             }
 
                             else -> {
-                                BasicMessage(
-                                    Modifier.align(Alignment.CenterHorizontally),
-                                    stringResource(R.string.lets_start)
-                                )
                             }
                         }
                     }
