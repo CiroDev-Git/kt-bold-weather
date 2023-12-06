@@ -1,7 +1,6 @@
 package com.cirodev.boldweatherapi.ui.screen.search.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -11,8 +10,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.cirodev.boldweatherapi.domain.model.Location
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -24,26 +25,28 @@ fun LocationCardItem(
 ) {
     Card(
         onClick = onClick,
-        shape = RoundedCornerShape(4.dp),
+        shape = RoundedCornerShape(18.dp),
         modifier = modifier
-            .clip(RoundedCornerShape(4.dp))
-            .padding(4.dp)
+            .padding(end = 10.dp)
     ) {
         Column(
-            modifier = Modifier
-                .padding(18.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(18.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                location.name,
+                text = location.name,
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleLarge
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Medium,
+                modifier = Modifier.padding(top = 8.dp),
+                textAlign = TextAlign.Center
             )
             Text(
-                location.country,
+                text = location.country,
                 color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleMedium
+                fontSize = 16.sp,
+                modifier = Modifier.padding(vertical = 24.dp),
+                textAlign = TextAlign.Center
             )
         }
     }
