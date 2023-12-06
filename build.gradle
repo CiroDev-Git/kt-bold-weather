@@ -27,6 +27,7 @@ buildscript {
         systemUIControllerVersion = '0.28.0'
         composeActivityVersion = '1.8.1'
         insetsVersion = '0.23.1'
+        coilVersion = '2.4.0'
 
     }
 }

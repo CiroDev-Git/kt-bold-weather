@@ -82,6 +82,8 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-tooling'
     implementation "androidx.activity:activity-compose:$composeActivityVersion"
 
+    implementation("io.coil-kt:coil-compose:$coilVersion")
+
     // TESTING
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"

@@ -6,4 +6,11 @@
     <string name="lets_search">Ingresa la ubicación a consultar</string>
     <string name="lets_start">¡Usa coordenadas, nombre, código postal o IP para visualizar el estado del clima de un lugar en específico!</string>
     <string name="no_locations_found">¡Vaya! No se han encontrado ubicaciones con la información ingresada.</string>
+    <string name="celcius">°C</string>
+    <string name="last_updated">Ultima actualización</string>
+    <string name="uv_index">UV</string>
+    <string name="humidity">Humedad</string>
+    <string name="wind_direction">Dirección</string>
+    <string name="wind_speed">Velocidad</string>
+    <string name="kph">Km/h</string>
 </resources>

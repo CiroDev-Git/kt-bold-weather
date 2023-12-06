@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.cirodev.boldweatherapi.ui.component.FailedMessage
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
-import com.cirodev.boldweatherapi.ui.screen.detail.components.ForecastCard
+import com.cirodev.boldweatherapi.ui.screen.detail.components.ForecastInfoItem
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.ForecastViewModel
 
@@ -38,7 +38,7 @@ fun DetailScreen(
                 }
 
                 is DataResult.OnSuccess -> {
-                    ForecastCard(Modifier.align(Alignment.CenterHorizontally), state.data)
+                    ForecastInfoItem(state.data)
                 }
             }
         }
