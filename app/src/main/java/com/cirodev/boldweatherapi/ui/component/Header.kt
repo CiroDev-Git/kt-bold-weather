@@ -14,8 +14,8 @@ fun Header() {
     Row(
         modifier = Modifier.fillMaxWidth().padding(4.dp), horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        IconComponent(icon = R.drawable.baseline_water_drop_24)
-        LogoComponent(icon = R.drawable.weather_error)
-        IconComponent(icon = R.drawable.baseline_wind_power_24)
+        IconComponent(icon = R.drawable.baseline_language_24)
+        LogoComponent(icon = R.drawable.nube)
+        IconComponent(icon = R.drawable.baseline_dark_mode_24)
     }
 }

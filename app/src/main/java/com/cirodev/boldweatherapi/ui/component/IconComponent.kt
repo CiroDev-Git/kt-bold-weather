@@ -34,7 +34,7 @@ fun IconComponent(
         Icon(
             painter = painterResource(id = icon),
             contentDescription = null,
-            modifier = Modifier.size(20.dp),
+            modifier = Modifier.size(30.dp),
             tint = tint
         )
     }
@@ -50,7 +50,7 @@ fun LogoComponent(
     Image(
         painter = painterResource(id = icon),
         contentDescription = "",
-        modifier = modifier.size(size = 58.dp)
+        modifier = modifier.size(size = 56.dp)
     )
 
 }
