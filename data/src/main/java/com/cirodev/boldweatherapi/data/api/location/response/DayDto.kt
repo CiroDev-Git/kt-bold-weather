@@ -5,17 +5,17 @@ import com.google.gson.annotations.SerializedName
 
 data class DayDto(
     @SerializedName("maxtemp_c")
-    val maxTempC: Int,
+    val maxTempC: Double,
     @SerializedName("mintemp_c")
     val minTempC: Double,
     @SerializedName("avgtemp_c")
     val avgTempC: Double,
     @SerializedName("avghumidity")
-    val avgHumidity: Int,
+    val avgHumidity: Double,
     @SerializedName("daily_chance_of_rain")
-    val dailyChanceOfRain: Int,
+    val dailyChanceOfRain: Double,
     val condition: ConditionDto,
-    val uv: Int
+    val uv: Double
 )
 
 fun DayDto.mapToDomain() = Day(

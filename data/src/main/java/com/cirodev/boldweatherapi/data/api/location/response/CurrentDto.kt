@@ -7,7 +7,7 @@ data class CurrentDto(
     @SerializedName("last_updated")
     val lastUpdated: String,
     @SerializedName("temp_c")
-    val tempC: Int,
+    val tempC: Double,
     val condition: ConditionDto,
     @SerializedName("wind_kph")
     val windKph: Double,
@@ -15,10 +15,10 @@ data class CurrentDto(
     val windDir: String,
     @SerializedName("precip_mm")
     val precipMm: Double,
-    val humidity: Int,
+    val humidity: Double,
     @SerializedName("feelslike_c")
-    val feelsLikeC: Int,
-    val uv: Int
+    val feelsLikeC: Double,
+    val uv: Double
 )
 
 fun CurrentDto.mapToDomain() = Current(

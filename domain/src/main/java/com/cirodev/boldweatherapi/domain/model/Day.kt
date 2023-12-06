@@ -1,11 +1,11 @@
 package com.cirodev.boldweatherapi.domain.model
 
 data class Day(
-    val maxTempC: Int,
+    val maxTempC: Double,
     val minTempC: Double,
     val avgTempC: Double,
-    val avgHumidity: Int,
-    val dailyChanceOfRain: Int,
+    val avgHumidity: Double,
+    val dailyChanceOfRain: Double,
     val condition: Condition,
-    val uv: Int
+    val uv: Double
 )
