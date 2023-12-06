@@ -31,12 +31,12 @@ fun CurrentInfoItem(
                 .width(40.dp)
         )
         Column {
-            Text(title, color = Color.Gray)
             Text(
-                subtitle,
+                title,
                 color = MaterialTheme.colorScheme.onBackground,
                 fontWeight = FontWeight.Bold
             )
+            Text(subtitle, color = Color.Gray)
         }
     }
 }

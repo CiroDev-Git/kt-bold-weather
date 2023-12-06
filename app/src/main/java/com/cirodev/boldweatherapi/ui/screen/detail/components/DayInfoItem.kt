@@ -35,31 +35,28 @@ fun DayInfoItem(
                 .width(40.dp)
         )
         Column {
-            Text(forecastDay.date, color = Color.Gray)
+            Text(
+                forecastDay.date,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.Bold
+            )
             forecastDay.day.let {
                 Row {
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            it.condition.text,
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Text(
                             "${stringResource(R.string.avg)} ${it.avgTempC}${stringResource(R.string.celcius)}",
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Bold
+                            color = Color.Gray
                         )
+                        Text(it.condition.text, color = Color.Gray)
                     }
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
                             "${stringResource(R.string.min_temperature)}: ${it.minTempC}${stringResource(R.string.celcius)}",
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Bold
+                            color = Color.Gray
                         )
                         Text(
                             "${stringResource(R.string.max_temperature)}: ${it.maxTempC}${stringResource(R.string.celcius)}",
-                            color = MaterialTheme.colorScheme.onBackground,
-                            fontWeight = FontWeight.Bold
+                            color = Color.Gray
                         )
                     }
                 }
