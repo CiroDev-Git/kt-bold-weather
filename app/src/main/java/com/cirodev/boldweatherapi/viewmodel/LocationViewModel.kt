@@ -20,6 +20,7 @@ class LocationViewModel @Inject constructor(
     val locationsState: MutableStateFlow<DataResult<List<Location>>?> get() = _locationsState
 
     init {
+        searchLocations("California")
     }
 
     fun searchLocations(query: String) {
