@@ -1,6 +1,7 @@
 package com.cirodev.boldweatherapi.di
 
 import com.cirodev.boldweatherapi.domain.repository.LocationRepository
+import com.cirodev.boldweatherapi.domain.usecase.GetForecastByLocationUseCase
 import com.cirodev.boldweatherapi.domain.usecase.SearchLocationsUseCase
 import dagger.Module
 import dagger.Provides
@@ -18,6 +19,14 @@ object UseCaseModule {
         locationRepository: LocationRepository
     ): SearchLocationsUseCase {
         return SearchLocationsUseCase(locationRepository)
+    }
+
+    @Singleton
+    @Provides
+    fun providesGetForecastByLocationUseCase(
+        locationRepository: LocationRepository
+    ): GetForecastByLocationUseCase {
+        return GetForecastByLocationUseCase(locationRepository)
     }
 
 }

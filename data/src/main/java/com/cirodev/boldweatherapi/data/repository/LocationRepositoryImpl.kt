@@ -5,8 +5,10 @@ import com.cirodev.boldweatherapi.core.generic.Either
 import com.cirodev.boldweatherapi.core.generic.Failure
 import com.cirodev.boldweatherapi.data.api.API_RESULT_TAG
 import com.cirodev.boldweatherapi.data.api.ApiResult
+import com.cirodev.boldweatherapi.data.api.location.response.mapToDomain
 import com.cirodev.boldweatherapi.data.api.location.response.toDomainList
 import com.cirodev.boldweatherapi.data.datasource.remote.LocationRemoteDataSource
+import com.cirodev.boldweatherapi.domain.model.ForecastInfo
 import com.cirodev.boldweatherapi.domain.model.Location
 import com.cirodev.boldweatherapi.domain.repository.LocationRepository
 import kotlinx.coroutines.flow.Flow
@@ -32,6 +34,26 @@ class LocationRepositoryImpl(
                     }
 
                     is ApiResult.Success -> Either.Right(response.data.toDomainList())
+                }
+            )
+        }
+    }
+
+    override suspend fun getForecastByLocation(name: String): Flow<Either<Failure, ForecastInfo>> {
+        return flow {
+            emit(
+                when (val response = remoteDataSource.getForecastByLocation(name)) {
+                    is ApiResult.Error -> {
+                        Log.e(API_RESULT_TAG, "Error ${response.code} - ${response.message}")
+                        Either.Left(Failure.NetworkError)
+                    }
+
+                    is ApiResult.Exception -> {
+                        Log.e(API_RESULT_TAG, "Exception ${response.e.message}")
+                        Either.Left(Failure.UnknownError)
+                    }
+
+                    is ApiResult.Success -> Either.Right(response.data.mapToDomain())
                 }
             )
         }
