@@ -24,6 +24,10 @@ class LocationViewModel @Inject constructor(
     }
 
     fun searchLocations(query: String) {
+        if (query.isEmpty()) {
+            _locationsState.value = null
+            return
+        }
         viewModelScope.launch {
             searchLocationsUseCase.execute(query)
                 .distinctUntilChanged()

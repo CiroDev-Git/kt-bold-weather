@@ -11,8 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
@@ -25,14 +24,14 @@ import com.cirodev.boldweatherapi.ui.theme.colorSecondary
 
 @Composable
 fun SearchInput(
+    toSearch: MutableState<String>,
     onSearch: (String) -> Unit
 ) {
     val focusManager = LocalFocusManager.current
-    val searchPdv = rememberSaveable { mutableStateOf("") }
     TextField(
-        value = searchPdv.value,
+        value = toSearch.value,
         onValueChange = {
-            searchPdv.value = it
+            toSearch.value = it
             onSearch(it)
         },
         modifier = Modifier.fillMaxWidth(),

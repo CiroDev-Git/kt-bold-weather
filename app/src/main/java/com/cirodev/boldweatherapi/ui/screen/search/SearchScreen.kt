@@ -10,6 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -101,6 +103,7 @@ fun SearchScreen(
 private fun SearchSection(
     onSearch: (String) -> Unit
 ) {
+    val toSearch = rememberSaveable { mutableStateOf("") }
     Text(
         text = stringResource(id = R.string.lets_start),
         style = TextStyle(
@@ -111,13 +114,16 @@ private fun SearchSection(
         modifier = Modifier.padding(vertical = 30.dp)
     )
     Box(modifier = Modifier.padding(bottom = 30.dp)) {
-        SearchInput { onSearch(it) }
+        SearchInput(toSearch) { onSearch(it) }
         IconComponent(
             icon = R.drawable.baseline_clear_24,
             background = colorSecondary,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .size(55.dp)
-        )
+        ) {
+            toSearch.value = ""
+            onSearch(toSearch.value)
+        }
     }
 }
