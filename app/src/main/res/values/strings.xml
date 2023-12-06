@@ -13,4 +13,8 @@
     <string name="wind_direction">Dirección</string>
     <string name="wind_speed">Velocidad</string>
     <string name="kph">Km/h</string>
+    <string name="min_temperature">Min</string>
+    <string name="max_temperature">Max</string>
+    <string name="forecast_info">A continuación, se visualizará el pronóstico actual para la ubicación junto a los dos próximos días.</string>
+    <string name="avg">Aprox</string>
 </resources>

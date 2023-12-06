@@ -16,7 +16,7 @@ interface LocationApi {
     @GET("forecast.json")
     suspend fun forecastLocation(
         @Query("q") name: String,
-        @Query("days") forecastDays: Int = 2
+        @Query("days") forecastDays: Int = 3
     ): Response<ForecastInfoDto>
 
 }

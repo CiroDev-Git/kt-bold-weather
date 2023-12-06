@@ -1,6 +1,5 @@
 package com.cirodev.boldweatherapi.ui.screen.detail.components
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -32,7 +32,7 @@ fun ForecastInfoItem(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 32.dp, start = 16.dp, end = 16.dp),
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
@@ -50,6 +50,20 @@ fun ForecastInfoItem(
         item {
             CurrentOverview(forecastInfo)
         }
+        item {
+            Text(
+                text = stringResource(R.string.forecast_info),
+                color = Color.Gray,
+                fontSize = 16.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.padding(vertical = 24.dp)
+            )
+        }
+        forecastInfo.forecast.forecastDays.forEach {
+            item {
+                DayInfoItem(it)
+            }
+        }
     }
 }
 
@@ -60,6 +74,13 @@ private fun LocationOverview(forecastInfo: ForecastInfo) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
+            text = forecastInfo.current.condition.text,
+            color = MaterialTheme.colorScheme.onBackground,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium,
+            textAlign = TextAlign.Center
+        )
+        Text(
             text = "${forecastInfo.current.tempC}${stringResource(R.string.celcius)}",
             color = MaterialTheme.colorScheme.onBackground,
             fontSize = 36.sp,
@@ -69,7 +90,7 @@ private fun LocationOverview(forecastInfo: ForecastInfo) {
         Text(
             text = "${forecastInfo.location.name}\n${forecastInfo.location.country}",
             color = MaterialTheme.colorScheme.onBackground,
-            fontSize = 20.sp,
+            fontSize = 18.sp,
             fontWeight = FontWeight.Medium,
             modifier = Modifier.padding(top = 8.dp),
             textAlign = TextAlign.Center
