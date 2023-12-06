@@ -45,7 +45,7 @@ fun SearchScreen(
                         Modifier.align(Alignment.CenterHorizontally),
                         state.data
                     ) { location ->
-                        onDetail(location.name)
+                        onDetail("${location.name} ${location.region}")
                     }
                 }
 

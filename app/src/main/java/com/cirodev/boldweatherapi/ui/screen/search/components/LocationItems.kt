@@ -24,7 +24,7 @@ fun LocationItems(
     ) {
         items(
             count = locations.size,
-            key = { locations[it].name },
+            key = { locations[it].id!! },
             itemContent = {
                 locations[it].let { location ->
                     LocationCardItem(
