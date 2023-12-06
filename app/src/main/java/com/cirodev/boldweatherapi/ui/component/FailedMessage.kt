@@ -1,14 +1,13 @@
-package com.cirodev.boldweatherapi.ui.screen.search.components
+package com.cirodev.boldweatherapi.ui.component
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.cirodev.boldweatherapi.R
 import com.cirodev.boldweatherapi.core.generic.Failure
-import com.cirodev.boldweatherapi.ui.component.BasicMessage
 
 @Composable
-fun SearchFailed(
+fun FailedMessage(
     modifier: Modifier,
     failure: Failure?
 ) {

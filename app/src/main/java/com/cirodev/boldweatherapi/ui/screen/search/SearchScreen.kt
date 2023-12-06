@@ -14,7 +14,7 @@ import com.cirodev.boldweatherapi.R
 import com.cirodev.boldweatherapi.ui.component.BasicMessage
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
 import com.cirodev.boldweatherapi.ui.component.SearchInput
-import com.cirodev.boldweatherapi.ui.screen.search.components.SearchFailed
+import com.cirodev.boldweatherapi.ui.component.FailedMessage
 import com.cirodev.boldweatherapi.ui.screen.search.components.SearchSuccess
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
@@ -37,7 +37,7 @@ fun SearchScreen(
                 }
 
                 is DataResult.OnFailed -> {
-                    SearchFailed(Modifier.align(Alignment.CenterHorizontally), state.failure)
+                    FailedMessage(Modifier.align(Alignment.CenterHorizontally), state.failure)
                 }
 
                 is DataResult.OnSuccess -> {
