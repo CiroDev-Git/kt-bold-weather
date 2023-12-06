@@ -21,7 +21,8 @@ import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
 
 @Composable
 fun SearchScreen(
-    viewModel: LocationViewModel = hiltViewModel()
+    viewModel: LocationViewModel = hiltViewModel(),
+    onDetail: (String) -> Unit
 ) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -40,8 +41,11 @@ fun SearchScreen(
                 }
 
                 is DataResult.OnSuccess -> {
-                    SearchSuccess(Modifier.align(Alignment.CenterHorizontally), state.data) {
-
+                    SearchSuccess(
+                        Modifier.align(Alignment.CenterHorizontally),
+                        state.data
+                    ) { location ->
+                        onDetail(location.name)
                     }
                 }
 
