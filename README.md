@@ -40,6 +40,31 @@ Las imágenes provistas por la Forecast API no funcionan, así que se está carg
 
 La Forecast API no recibe el ID de la locación, se debe enviar el nombre, pero pueden existir muchas ubicaciones con el mismo nombre (Ej: Los Angeles), así que se está enviando el nombre junto a la región para obtener un resultado más preciso. 
 
+## Run Locally
+
+Hecho en Android Studio
+
+```bash
+  Giraffe | 2022.3.1 Patch 4
+```
+
+Con Gradle JDK
+
+```bash
+  jbr-17
+```
+
+Configs de compilación
+
+```bash
+    minSdk = 21
+    targetSdk = 34
+    compileSdk = 34
+    gradle = '8.1.4'
+    kotlin = '1.8.20'
+    kotlinCompilerExtension = '1.4.6'
+```
+
 ## Screenshots
 
 ![App Screenshot](https://github.com/CiroDev-Git/kt-bold-weather/assets/32694941/60e0b8b7-349f-4eb9-9215-f68b117abdc3)
