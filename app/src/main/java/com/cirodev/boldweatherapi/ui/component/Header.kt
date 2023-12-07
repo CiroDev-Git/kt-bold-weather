@@ -10,12 +10,16 @@ import androidx.compose.ui.unit.dp
 import com.cirodev.boldweatherapi.R
 
 @Composable
-fun Header() {
+fun Header(
+    onTheme: () -> Unit
+) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(4.dp), horizontalArrangement = Arrangement.SpaceBetween
     ) {
         IconComponent(icon = R.drawable.baseline_language_24)
         LogoComponent(icon = R.drawable.nube)
-        IconComponent(icon = R.drawable.baseline_dark_mode_24)
+        IconComponent(icon = R.drawable.baseline_dark_mode_24) {
+            onTheme()
+        }
     }
 }

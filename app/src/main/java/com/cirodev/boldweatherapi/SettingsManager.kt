@@ -17,8 +17,8 @@ class SettingsManager(
 
     companion object {
         const val DATA_STORE = "settings"
-        private val THEME_KEY = stringPreferencesKey("app_theme_key")
-        private val LANG_KEY = stringPreferencesKey("app_lang_key")
+        val THEME_KEY = stringPreferencesKey("app_theme_key")
+        val LANG_KEY = stringPreferencesKey("app_lang_key")
     }
 
     fun getConfig(key: Preferences.Key<String>): Flow<String?> {

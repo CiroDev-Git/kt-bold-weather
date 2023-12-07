@@ -35,6 +35,7 @@ import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
 @Composable
 fun SearchScreen(
     viewModel: LocationViewModel = hiltViewModel(),
+    onTheme: () -> Unit,
     onDetail: (String) -> Unit
 ) {
     val state = viewModel.locationsState.collectAsState().value
@@ -46,7 +47,7 @@ fun SearchScreen(
                 .fillMaxSize()
                 .padding(20.dp)
         ) {
-            Header()
+            Header(onTheme)
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
