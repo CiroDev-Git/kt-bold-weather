@@ -20,12 +20,11 @@ class MainViewModel @Inject constructor(
 
     var appState by mutableStateOf<AppConfig?>(null)
 
-    init {
-        updateAppConfig()
-    }
-
-    fun updateAppConfig() {
+    fun loadAppConfig(darkModeOn: Boolean? = null) {
         viewModelScope.launch {
+            if (darkModeOn == true) {
+                settingsManager.saveConfig(SettingsManager.THEME_KEY, ThemeType.Dark.toString())
+            }
             val lang = settingsManager.getConfig(SettingsManager.LANG_KEY).first()
             val theme = settingsManager.getConfig(SettingsManager.THEME_KEY).first()
             appState = AppConfig(
@@ -50,7 +49,7 @@ class MainViewModel @Inject constructor(
             } else {
                 settingsManager.saveConfig(SettingsManager.THEME_KEY, ThemeType.Dark.toString())
             }
-            updateAppConfig()
+            loadAppConfig()
         }
     }
 

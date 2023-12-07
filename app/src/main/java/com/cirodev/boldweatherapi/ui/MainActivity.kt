@@ -1,5 +1,6 @@
 package com.cirodev.boldweatherapi.ui
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -20,6 +21,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.loadAppConfig(isDarkModeOn())
         setContent {
             viewModel.appState?.let {
                 AppTheme(theme = it.themeType) {
@@ -36,6 +38,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun isDarkModeOn(): Boolean {
+        val nightModeFlags = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 
 }
