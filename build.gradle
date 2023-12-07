@@ -29,6 +29,7 @@ buildscript {
         insetsVersion = '0.23.1'
         coilVersion = '2.4.0'
         lottieVersion = '6.0.0'
+        dataStoreVersion = '1.0.0'
 
     }
 }
