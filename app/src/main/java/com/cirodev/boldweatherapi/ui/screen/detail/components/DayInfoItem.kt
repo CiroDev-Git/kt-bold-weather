@@ -1,6 +1,5 @@
 package com.cirodev.boldweatherapi.ui.screen.detail.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,6 +14,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.cirodev.boldweatherapi.R
 import com.cirodev.boldweatherapi.domain.model.ForecastDay
 
@@ -27,12 +27,14 @@ fun DayInfoItem(
             .fillMaxWidth()
             .padding(16.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.baseline_today_24),
-            contentDescription = null,
+        AsyncImage(
+            model = forecastDay.day.condition.icon,
+            contentDescription = forecastDay.day.condition.text,
             modifier = Modifier
                 .padding(end = 8.dp)
-                .width(40.dp)
+                .width(40.dp),
+            placeholder = painterResource(id = R.drawable.weather_forecast),
+            error = painterResource(id = R.drawable.weather_error)
         )
         Column {
             Text(
