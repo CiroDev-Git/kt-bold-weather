@@ -1,11 +1,14 @@
 package com.cirodev.boldweatherapi.di
 
 import com.cirodev.boldweatherapi.BuildConfig
+import com.cirodev.boldweatherapi.SettingsManager
 import com.cirodev.boldweatherapi.data.api.location.request.LocationApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -20,7 +23,9 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun providesOkHttpClient(): OkHttpClient {
+    fun providesOkHttpClient(
+        settingsManager: SettingsManager
+    ): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -28,11 +33,17 @@ object ApiModule {
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor(
                 Interceptor { chain ->
+                    val lang = runBlocking {
+                        settingsManager.getConfig(SettingsManager.LANG_KEY).first()
+                    }
+
                     val url = chain.request().url.newBuilder()
                         .addQueryParameter("key", BuildConfig.WEATHER_API_KEY)
-                        .build()
+                    if (lang != null) {
+                        url.addQueryParameter("lang", lang)
+                    }
                     return@Interceptor chain.proceed(
-                        chain.request().newBuilder().url(url).build()
+                        chain.request().newBuilder().url(url.build()).build()
                     )
                 }
             )

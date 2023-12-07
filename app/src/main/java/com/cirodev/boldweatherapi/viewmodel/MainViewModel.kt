@@ -27,6 +27,9 @@ class MainViewModel @Inject constructor(
             }
             val lang = settingsManager.getConfig(SettingsManager.LANG_KEY).first()
             val theme = settingsManager.getConfig(SettingsManager.THEME_KEY).first()
+            if (lang == null) {
+                settingsManager.saveConfig(SettingsManager.LANG_KEY, LangType.ES.toString())
+            }
             appState = AppConfig(
                 themeType = when (theme) {
                     ThemeType.Light.toString() -> ThemeType.Light
