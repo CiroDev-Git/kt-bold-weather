@@ -17,4 +17,5 @@
     <string name="max_temperature">Max</string>
     <string name="forecast_info">The current forecast for the location is then displayed along with the next two days.</string>
     <string name="avg">Avg</string>
+    <string name="api">API</string>
 </resources>

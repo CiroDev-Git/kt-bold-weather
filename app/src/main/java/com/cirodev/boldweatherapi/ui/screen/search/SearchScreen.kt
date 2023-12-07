@@ -28,6 +28,7 @@ import com.cirodev.boldweatherapi.ui.component.IconComponent
 import com.cirodev.boldweatherapi.ui.component.LoadingMessage
 import com.cirodev.boldweatherapi.ui.component.SearchInput
 import com.cirodev.boldweatherapi.ui.screen.search.components.LocationCardItem
+import com.cirodev.boldweatherapi.ui.theme.LangType
 import com.cirodev.boldweatherapi.ui.theme.colorSecondary
 import com.cirodev.boldweatherapi.viewmodel.DataResult
 import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
@@ -35,6 +36,7 @@ import com.cirodev.boldweatherapi.viewmodel.LocationViewModel
 @Composable
 fun SearchScreen(
     viewModel: LocationViewModel = hiltViewModel(),
+    lang: LangType,
     onTheme: () -> Unit,
     onLang: () -> Unit,
     onDetail: (String) -> Unit
@@ -48,7 +50,7 @@ fun SearchScreen(
                 .fillMaxSize()
                 .padding(20.dp)
         ) {
-            Header(onTheme, onLang)
+            Header(lang, onTheme, onLang)
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {

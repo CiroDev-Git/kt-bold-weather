@@ -30,13 +30,13 @@ class MainActivity : ComponentActivity() {
                         color = MaterialTheme.colorScheme.background
                     ) {
                         NavGraph(
+                            it.langType,
                             onTheme = {
                                 viewModel.updateTheme()
-                            },
-                            onLang = {
-                                viewModel.updateLang()
                             }
-                        )
+                        ) {
+                            viewModel.updateLang()
+                        }
                     }
                 }
             }

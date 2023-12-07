@@ -17,4 +17,5 @@
     <string name="max_temperature">Max</string>
     <string name="forecast_info">A continuación, se visualizará el pronóstico actual para la ubicación junto a los dos próximos días.</string>
     <string name="avg">Aprox</string>
+    <string name="api">API</string>
 </resources>

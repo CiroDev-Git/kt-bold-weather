@@ -7,9 +7,11 @@ import androidx.navigation.compose.rememberNavController
 import com.cirodev.boldweatherapi.ui.screen.detail.DetailScreen
 import com.cirodev.boldweatherapi.ui.screen.search.SearchScreen
 import com.cirodev.boldweatherapi.ui.screen.splash.SplashScreen
+import com.cirodev.boldweatherapi.ui.theme.LangType
 
 @Composable
 fun NavGraph(
+    lang: LangType,
     onTheme: () -> Unit,
     onLang: () -> Unit,
 ) {
@@ -28,6 +30,7 @@ fun NavGraph(
 
         composable(route = AppRouting.SearchScreen.route) {
             SearchScreen(
+                lang = lang,
                 onTheme = onTheme,
                 onLang = onLang
             ) {
