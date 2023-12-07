@@ -3,10 +3,6 @@
 
 Utilizando la API de WeatherApi visualizar el clima actual de una ubicación ingresada junto el pronóstico de esta para los siguientes 2 días.
 
-## Documentation
-
-[API Documentation](https://www.weatherapi.com/docs/)
-
 ## Authors
 
 - [@CiroDev-Git](https://github.com/CiroDev-Git)
@@ -29,6 +25,20 @@ Utilizando la API de WeatherApi visualizar el clima actual de una ubicación ing
 - Retrofit
 - Flow
 - Mappers
+
+## Documentation
+
+[API Documentation](https://www.weatherapi.com/docs/)
+
+## About API
+
+#### No se puede mostrar la imagen “https://api.weatherapi.com//cdn.weatherapi.com/weather/64x64/day/113.png” porque contiene errores.
+
+Las imágenes provistas por la Forecast API no funcionan, así que se está cargado el recurso asignado para el callback de error en Coil.
+
+#### { "error": { "code": 1006, "message": "No matching location found." } }
+
+La Forecast API no recibe el ID de la locación, se debe enviar el nombre, pero pueden existir muchas ubicaciones con el mismo nombre (Ej: Los Angeles), así que se está enviando el nombre junto a la región para obtener un resultado más preciso. 
 
 ## Screenshots
 
