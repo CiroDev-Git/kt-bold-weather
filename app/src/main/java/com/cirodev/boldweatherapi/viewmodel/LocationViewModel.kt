@@ -20,7 +20,7 @@ class LocationViewModel @Inject constructor(
     val locationsState: MutableStateFlow<DataResult<List<Location>>?> get() = _locationsState
 
     fun searchLocations(query: String) {
-        if (query.isEmpty()) {
+        if (query.trim().isEmpty()) {
             _locationsState.value = null
             return
         }
