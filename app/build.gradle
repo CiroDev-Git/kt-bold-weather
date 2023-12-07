@@ -83,6 +83,7 @@ dependencies {
     implementation "androidx.activity:activity-compose:$composeActivityVersion"
 
     implementation("io.coil-kt:coil-compose:$coilVersion")
+    implementation "com.airbnb.android:lottie-compose:$lottieVersion"
 
     // TESTING
     testImplementation "junit:junit:$junitVersion"

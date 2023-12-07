@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.cirodev.boldweatherapi.ui.screen.detail.DetailScreen
 import com.cirodev.boldweatherapi.ui.screen.search.SearchScreen
+import com.cirodev.boldweatherapi.ui.screen.splash.SplashScreen
 
 @Composable
 fun NavGraph() {
@@ -13,8 +14,14 @@ fun NavGraph() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = AppRouting.SearchScreen.route,
+        startDestination = AppRouting.SplashScreen.route,
     ) {
+
+        composable(route = AppRouting.SplashScreen.route) {
+            SplashScreen {
+                navController.navigate(AppRouting.SearchScreen.route)
+            }
+        }
 
         composable(route = AppRouting.SearchScreen.route) {
             SearchScreen {
