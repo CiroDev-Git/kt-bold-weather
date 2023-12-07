@@ -11,12 +11,15 @@ import com.cirodev.boldweatherapi.R
 
 @Composable
 fun Header(
-    onTheme: () -> Unit
+    onTheme: () -> Unit,
+    onLang: () -> Unit
 ) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(4.dp), horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        IconComponent(icon = R.drawable.baseline_language_24)
+        IconComponent(icon = R.drawable.baseline_language_24) {
+            onLang()
+        }
         LogoComponent(icon = R.drawable.nube)
         IconComponent(icon = R.drawable.baseline_dark_mode_24) {
             onTheme()

@@ -10,7 +10,8 @@ import com.cirodev.boldweatherapi.ui.screen.splash.SplashScreen
 
 @Composable
 fun NavGraph(
-    onTheme: () -> Unit
+    onTheme: () -> Unit,
+    onLang: () -> Unit,
 ) {
     val detailScreenParam = "locationName"
     val navController = rememberNavController()
@@ -27,7 +28,8 @@ fun NavGraph(
 
         composable(route = AppRouting.SearchScreen.route) {
             SearchScreen(
-                onTheme = onTheme
+                onTheme = onTheme,
+                onLang = onLang
             ) {
                 navController.navigate(
                     "${AppRouting.DetailScreen.route}/{${detailScreenParam}}"

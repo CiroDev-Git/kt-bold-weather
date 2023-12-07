@@ -53,4 +53,16 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    fun updateLang() {
+        viewModelScope.launch {
+            val lang = settingsManager.getConfig(SettingsManager.LANG_KEY).first()
+            if (lang == LangType.ES.toString()) {
+                settingsManager.saveConfig(SettingsManager.LANG_KEY, LangType.EN.toString())
+            } else {
+                settingsManager.saveConfig(SettingsManager.LANG_KEY, LangType.ES.toString())
+            }
+            loadAppConfig()
+        }
+    }
+
 }

@@ -32,6 +32,9 @@ class MainActivity : ComponentActivity() {
                         NavGraph(
                             onTheme = {
                                 viewModel.updateTheme()
+                            },
+                            onLang = {
+                                viewModel.updateLang()
                             }
                         )
                     }
