@@ -35,7 +35,9 @@ fun NavGraph() {
         composable(route = "${AppRouting.DetailScreen.route}/{${detailScreenParam}}") {
             val locationParam = it.arguments?.getString(detailScreenParam)
             locationParam?.let { param ->
-                DetailScreen(locationName = param)
+                DetailScreen(locationName = param) {
+                    navController.popBackStack()
+                }
             }
         }
     }
