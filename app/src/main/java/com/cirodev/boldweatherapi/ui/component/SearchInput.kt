@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -38,7 +39,12 @@ fun SearchInput(
         leadingIcon = {
             Icon(imageVector = Icons.Default.Search, stringResource(R.string.lets_search))
         },
-        label = { Text(text = stringResource(R.string.lets_search)) },
+        label = {
+            Text(
+                text = stringResource(R.string.lets_search),
+                color = MaterialTheme.colorScheme.onBackground
+            )
+        },
         shape = RoundedCornerShape(26.5.dp),
         singleLine = true,
         visualTransformation = VisualTransformation.None,
@@ -49,7 +55,7 @@ fun SearchInput(
         colors = TextFieldDefaults.colors(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
-            cursorColor = colorSecondary
+            cursorColor = MaterialTheme.colorScheme.onBackground,
         )
     )
 }
